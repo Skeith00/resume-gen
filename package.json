@@ -2,7 +2,7 @@
   "name": "resume-gen",
   "version": "1.0.0",
   "description": "A resume generator",
-  "main": "index.js",
+  "main": "src/pages/_app.jsx",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

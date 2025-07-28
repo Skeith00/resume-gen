@@ -1,15 +1,24 @@
 {
   "name": "Sergi Montañes",
   "title": "Software Engineer & Tech Enthusiast",
-  "about": "Passionate about building scalable backend systems, intuitive frontend interfaces, and everything in between. Based in Australia, originally from Spain.",
+  "about": "Passionate about building scalable backend systems...",
   "contacts": [
     { "type": "email", "url": "mailto:sergi@example.com" },
     { "type": "linkedin", "url": "https://linkedin.com/in/sergimontanes" },
     { "type": "github", "url": "https://github.com/sergimontanes" }
   ],
   "experience": [
-    { "role": "Senior Developer", "company": "Acme Corp", "period": "2022–Present", "details": "Led migration to microservices and cloud-native infrastructure." },
-    { "role": "Software Engineer", "company": "Tech Solutions", "period": "2019–2022", "details": "Built scalable backend APIs in Java and Spring Boot." }
+    { "role": "Senior Developer", "company": "Acme Corp", "period": "2022–Present", "details": "Led migration to microservices." }
   ],
-  "skills": ["Java", "React", "Docker", "AWS", "MongoDB"]
+  "education": [
+    { "degree": "BSc Computer Science", "institution": "University of Lleida", "period": "2015–2019" }
+  ],
+  "projects": [
+    { "name": "Resume Generator", "description": "Web app to generate stylish resumes using templates and JSON data." },
+    { "name": "Combat Sports Website", "description": "Modern React site for combat sports enthusiasts." }
+  ],
+  "certifications": [
+    { "name": "AWS Certified Developer", "issuer": "Amazon", "year": "2021" }
+  ],
+  "skills": ["Java", "React", "Docker", "AWS"]
 }
