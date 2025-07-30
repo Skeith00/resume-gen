@@ -1,7 +1,9 @@
 import TemplateClassic from "@components/templates/TemplateClassic"
+import TemplateWeb from "@components/templates/TemplateWeb"
 
 const templates = {
     classic: TemplateClassic,
+    web: TemplateWeb,
     // Add more templates: modern, minimal, etc.
 }
 
