@@ -1,7 +1,7 @@
 {
-  "name": "resume-gen",
+  "name": "profile-gen",
   "version": "1.0.0",
-  "description": "A resume generator",
+  "description": "A profile generator",
   "main": "src/pages/_app.jsx",
   "scripts": {
     "dev": "next dev",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Skeith00/resume-gen.git"
+    "url": "git+https://github.com/Skeith00/profile-gen.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Skeith00/resume-gen/issues"
+    "url": "https://github.com/Skeith00/profile-gen/issues"
   },
-  "homepage": "https://github.com/Skeith00/resume-gen#readme",
+  "homepage": "https://github.com/Skeith00/profile-gen#readme",
   "dependencies": {
     "next": "^15.4.4",
     "react": "^19.1.0",

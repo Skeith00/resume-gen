@@ -1,5 +1,5 @@
-# resume-gen
-A resume generator
+# profile-gen
+A profile generator
 
 To install all dependencies:
 `npm install`

@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Define custom CSS variables using Tailwind's theme() function */
+/*:root {
+    --my-custom-bg-color: theme('colors.blue.500'); /* References Tailwind's blue-500 */
+/*}*/
+
+/* Apply the custom CSS variable to an element */
+/*body {
+    background-color: var(--my-custom-bg-color);
+}*/
