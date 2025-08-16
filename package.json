@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Skeith00/profile-gen#readme",
   "dependencies": {
     "next": "^15.4.4",
+    "prop-types": "^15.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

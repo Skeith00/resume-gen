@@ -1,0 +1,119 @@
+{
+  "collection": "profile",
+  "attributes": [
+    {
+      "key": "name",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "tagline",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "photo",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "about",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "contacts",
+      "type": "array",
+      "required": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "required": true
+          },
+          "url": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    },
+    {
+      "key": "skills",
+      "type": "array",
+      "required": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    {
+      "key": "projects",
+      "type": "array",
+      "required": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "link": {
+            "type": "string",
+            "required": false
+          }
+        }
+      }
+    },
+    {
+      "key": "testimonials",
+      "type": "array",
+      "required": false,
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "required": true
+          },
+          "author": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    },
+    {
+      "key": "services",
+      "type": "array",
+      "required": false,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "description": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    },
+    {
+      "key": "contactText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "key": "email",
+      "type": "string",
+      "required": true
+    }
+  ]
+}
