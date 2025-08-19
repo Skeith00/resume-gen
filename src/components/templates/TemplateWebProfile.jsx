@@ -6,7 +6,7 @@ export default function TemplateWebProfile({ data }) {
             <header className="bg-gradient-to-r from-sky-600 to-indigo-600 text-white py-12">
                 <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center gap-6">
                     <img
-                        src={data.photo}
+                        src={data.photo || "/profile.jpg"}
                         alt={data.name}
                         className="w-28 h-28 rounded-full border-4 border-white object-cover shadow-lg"
                     />
@@ -42,7 +42,7 @@ export default function TemplateWebProfile({ data }) {
                     <div className="bg-white p-4 rounded-lg shadow">
                         <h3 className="font-semibold text-lg mb-2">Skills</h3>
                         <div className="flex flex-wrap gap-2">
-                            {data.skills?.map((s, i) => (
+                            {data.data?.map((s, i) => (
                                 <span key={i} className="text-sm bg-sky-50 text-sky-700 px-2 py-1 rounded-full">
                   {s}
                 </span>

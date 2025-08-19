@@ -5,7 +5,7 @@ export default function TemplateProfessionalProfile({ data }) {
             <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
                 <div className="max-w-4xl mx-auto text-center">
                     <img
-                        src={data.photo}
+                        src={data.photo || "/profile.jpg"}
                         alt={data.name}
                         className="w-32 h-32 mx-auto rounded-full border-4 border-white shadow-lg"
                     />

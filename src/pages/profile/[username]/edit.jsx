@@ -2,38 +2,35 @@
 import { useState } from "react";
 import { useRouter } from 'next/router';
 import { profilePropType } from '@propTypes/profilePropTypes';
+import AddSectionDropdown from "@components/edit/AddSectionDropdown";
+import OptionalSectionWrapper from "@components/edit/OptionalSectionWrapper";
+import {OPTIONAL_SECTIONS} from "@components/edit/sections";
 
 export default function EditProfile({ data, username }) {
     const router = useRouter();
     const [profile, setProfile] = useState(data || {
-        contacts: [],
-        skills: [],
-        projects: [],
-        testimonials: [],
-        services: [],
+        name: '',
+        tagline: '',
+        photo: '',
+        about: '',
+        email: '',
+        //contacts: [],
+        //skills: [],
+        //projects: [],
+        //testimonials: [],
+        //services: [],
     });
+
     const [saving, setSaving] = useState(false);
 
-    function handleChange(field, value) {
-        setProfile({ ...profile, [field]: value });
+    function handleChange(key, value) {
+        setProfile({ ...profile, [key]: value });
     }
 
-    function handleArrayChange(field, index, subField, value) {
-        const arr = [...profile[field]];
-        if (typeof arr[index] === 'object') {
-            arr[index] = { ...arr[index], [subField]: value };
-        } else {
-            arr[index] = value;
-        }
-        setProfile({ ...profile, [field]: arr });
-    }
-
-    function handleAddArrayItem(field, defaultValue) {
-        setProfile({ ...profile, [field]: [...profile[field], defaultValue] });
-    }
-
-    function handleRemoveArrayItem(field, index) {
-        setProfile({ ...profile, [field]: profile[field].filter((_, i) => i !== index) });
+    function handleRemoveSection(key) {
+        const updated = { ...profile };
+        delete updated[key]; // remove data
+        setProfile(updated);
     }
 
     const handleSave = async (e) => {
@@ -58,9 +55,9 @@ export default function EditProfile({ data, username }) {
     return (
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-6">
             <h1 className="text-2xl font-bold mb-6 text-gray-800">Edit Profile</h1>
-            <form onSubmit={handleSave} className="space-y-6">
 
-                {/* BASIC INFO */}
+            <form onSubmit={handleSave} className="space-y-6">
+                {/* Mandatory fields */}
                 <div>
                     <label className="block font-semibold text-gray-700">Name</label>
                     <input
@@ -100,85 +97,6 @@ export default function EditProfile({ data, username }) {
                     />
                 </div>
 
-                {/* CONTACTS */}
-                <div>
-                    <h2 className="font-semibold text-gray-800 mb-2">Contacts</h2>
-                    {profile.contacts.map((contact, i) => (
-                        <div key={i} className="flex gap-2 mb-2">
-                            <input
-                                type="text"
-                                placeholder="Type"
-                                className="border rounded px-2 py-1 flex-1"
-                                value={contact.type}
-                                onChange={(e) => handleArrayChange('contacts', i, 'type', e.target.value)}
-                            />
-                            <input
-                                type="text"
-                                placeholder="URL"
-                                className="border rounded px-2 py-1 flex-2"
-                                value={contact.url}
-                                onChange={(e) => handleArrayChange('contacts', i, 'url', e.target.value)}
-                            />
-                            <button
-                                type="button"
-                                className="text-red-500 font-semibold"
-                                onClick={() => handleRemoveArrayItem('contacts', i)}
-                            >
-                                Remove
-                            </button>
-                        </div>
-                    ))}
-                    <button
-                        type="button"
-                        className="text-blue-500 font-semibold mt-1"
-                        onClick={() => handleAddArrayItem('contacts', { type: '', url: '' })}
-                    >
-                        + Add Contact
-                    </button>
-                </div>
-
-                {/* SKILLS */}
-                <div>
-                    <h2 className="font-semibold text-gray-800 mb-2">Skills</h2>
-                    <div className="flex flex-wrap gap-2 mb-2">
-                        {profile.skills.map((skill, i) => (
-                            <div key={i} className="flex items-center gap-1">
-                                <input
-                                    type="text"
-                                    className="border rounded px-2 py-1"
-                                    value={skill}
-                                    onChange={(e) => handleArrayChange('skills', i, null, e.target.value)}
-                                />
-                                <button
-                                    type="button"
-                                    className="text-red-500 font-semibold"
-                                    onClick={() => handleRemoveArrayItem('skills', i)}
-                                >
-                                    x
-                                </button>
-                            </div>
-                        ))}
-                        <button
-                            type="button"
-                            className="text-blue-500 font-semibold"
-                            onClick={() => handleAddArrayItem('skills', '')}
-                        >
-                            + Add Skill
-                        </button>
-                    </div>
-                </div>
-
-                {/* Other sections (Projects, Testimonials, Services) can follow the same pattern with Tailwind styling */}
-                {/* CONTACT TEXT & EMAIL */}
-                <div>
-                    <label className="block font-semibold text-gray-700">Contact Text</label>
-                    <textarea
-                        className="mt-1 w-full border rounded px-3 py-2"
-                        value={profile.contactText}
-                        onChange={(e) => handleChange('contactText', e.target.value)}
-                    />
-                </div>
-
                 <div>
                     <label className="block font-semibold text-gray-700">Email</label>
                     <input
@@ -189,6 +107,32 @@ export default function EditProfile({ data, username }) {
                     />
                 </div>
 
+                {/* Dynamically load optional sections */}
+                {OPTIONAL_SECTIONS.map(({ key, label, Component }) =>
+                    profile[key] && Component ? (
+                        <OptionalSectionWrapper
+                            key={key}
+                            sectionKey={key}
+                            label={label}
+                            onRemove={handleRemoveSection}
+                        >
+                            {Component && (
+                                <Component
+                                    data={profile[key]}
+                                    onChange={(val) => handleChange(key, val)}
+                                />
+                            )}
+                        </OptionalSectionWrapper>
+                    ) : null
+                )}
+
+                {/* Add section dropdown */}
+                <AddSectionDropdown
+                    profile={profile}
+                    onAdd={(section) => handleChange(section.key, section.defaultValue)}
+                />
+
+                {/* Save button */}
                 <button
                     type="submit"
                     disabled={saving}
