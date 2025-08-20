@@ -7,7 +7,7 @@
       "required": true
     },
     {
-      "key": "tagline",
+      "key": "headline",
       "type": "string",
       "required": true
     },

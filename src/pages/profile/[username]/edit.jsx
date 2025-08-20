@@ -10,7 +10,7 @@ export default function EditProfile({ data, username }) {
     const router = useRouter();
     const [profile, setProfile] = useState(data || {
         name: '',
-        tagline: '',
+        headline: '',
         photo: '',
         about: '',
         email: '',
@@ -69,12 +69,12 @@ export default function EditProfile({ data, username }) {
                 </div>
 
                 <div>
-                    <label className="block font-semibold text-gray-700">Tagline</label>
+                    <label className="block font-semibold text-gray-700">headline</label>
                     <input
                         type="text"
                         className="mt-1 w-full border rounded px-3 py-2"
-                        value={profile.tagline}
-                        onChange={(e) => handleChange('tagline', e.target.value)}
+                        value={profile.headline}
+                        onChange={(e) => handleChange('headline', e.target.value)}
                     />
                 </div>
 

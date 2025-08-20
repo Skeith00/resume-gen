@@ -12,7 +12,7 @@ export default function TemplateWebProfile({ data }) {
                     />
                     <div className="text-center md:text-left">
                         <h1 className="text-3xl font-bold">{data.name}</h1>
-                        <p className="text-lg mt-1 text-sky-100">{data.tagline}</p>
+                        <p className="text-lg mt-1 text-sky-100">{data.headline}</p>
                         <div className="flex flex-wrap gap-3 mt-3 justify-center md:justify-start">
                             {data.contacts?.map((c, i) => (
                                 <a
@@ -39,17 +39,16 @@ export default function TemplateWebProfile({ data }) {
                         <p className="text-gray-700 text-sm leading-relaxed">{data.about}</p>
                     </div>
 
-                    <div className="bg-white p-4 rounded-lg shadow">
-                        <h3 className="font-semibold text-lg mb-2">Skills</h3>
-                        <div className="flex flex-wrap gap-2">
-                            {data.data?.map((s, i) => (
-                                <span key={i} className="text-sm bg-sky-50 text-sky-700 px-2 py-1 rounded-full">
-                  {s}
-                </span>
-                            ))}
+                    {data.skills?.length > 0 && (
+                        <div className="bg-white p-4 rounded-lg shadow">
+                            <h3 className="font-semibold text-lg mb-2">Skills</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {data.skills?.map((s, i) => (
+                                    <span key={i} className="text-sm bg-sky-50 text-sky-700 px-2 py-1 rounded-full">{s}</span>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-
+                    )}
                     {data.testimonials?.length > 0 && (
                         <div className="bg-white p-4 rounded-lg shadow">
                             <h3 className="font-semibold text-lg mb-2">Testimonials</h3>

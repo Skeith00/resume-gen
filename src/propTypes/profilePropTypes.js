@@ -23,7 +23,7 @@ export const servicePropType = PropTypes.shape({
 
 export const profilePropType = PropTypes.shape({
     name: PropTypes.string,
-    tagline: PropTypes.string,
+    headline: PropTypes.string,
     photo: PropTypes.string,
     about: PropTypes.string,
     contacts: PropTypes.arrayOf(contactPropType),
