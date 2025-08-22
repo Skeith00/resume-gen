@@ -79,23 +79,23 @@ export default function TemplateWebProfile({ data }) {
                             ))}
                         </div>
                     </div>
-
-                    <div className="bg-white p-6 rounded-lg shadow">
-                        <h3 className="font-semibold text-xl mb-4">Experience</h3>
-                        <div className="space-y-4">
-                            {data.experience?.map((job, i) => (
-                                <div key={i} className="flex justify-between items-start">
-                                    <div>
-                                        <strong className="block text-gray-900">{job.role}</strong>
-                                        <span className="text-sm text-gray-600">{job.company}</span>
-                                        <p className="text-gray-700 text-sm mt-1">{job.details}</p>
+                    {data.experience?.length > 0 && (
+                        <div className="bg-white p-6 rounded-lg shadow">
+                            <h3 className="font-semibold text-xl mb-4">Experience</h3>
+                            <div className="space-y-4">
+                                {data.experience?.map((job, i) => (
+                                    <div key={i} className="flex justify-between items-start">
+                                        <div>
+                                            <strong className="block text-gray-900">{job.role}</strong>
+                                            <span className="text-sm text-gray-600">{job.company}</span>
+                                            <p className="text-gray-700 text-sm mt-1">{job.details}</p>
+                                        </div>
+                                        <div className="text-sm text-gray-500">{job.period}</div>
                                     </div>
-                                    <div className="text-sm text-gray-500">{job.period}</div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
-                    </div>
-
+                    )}
                     {data.services?.length > 0 && (
                         <div className="bg-white p-6 rounded-lg shadow">
                             <h3 className="font-semibold text-xl mb-4">Services</h3>

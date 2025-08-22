@@ -11,7 +11,7 @@ export default function EditProfile({ data, username }) {
     const [profile, setProfile] = useState(data || {
         name: '',
         headline: '',
-        photo: '',
+        //photo: '',
         about: '',
         email: '',
         //contacts: [],
@@ -52,6 +52,10 @@ export default function EditProfile({ data, username }) {
         }
     }
 
+    function handleChange(key, value) {
+        setProfile({ ...profile, [key]: value });
+    }
+
     return (
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-6">
             <h1 className="text-2xl font-bold mb-6 text-gray-800">Edit Profile</h1>
@@ -69,7 +73,7 @@ export default function EditProfile({ data, username }) {
                 </div>
 
                 <div>
-                    <label className="block font-semibold text-gray-700">headline</label>
+                    <label className="block font-semibold text-gray-700">Headline</label>
                     <input
                         type="text"
                         className="mt-1 w-full border rounded px-3 py-2"
@@ -77,8 +81,7 @@ export default function EditProfile({ data, username }) {
                         onChange={(e) => handleChange('headline', e.target.value)}
                     />
                 </div>
-
-                <div>
+                {/*<div>
                     <label className="block font-semibold text-gray-700">Photo URL</label>
                     <input
                         type="text"
@@ -86,8 +89,7 @@ export default function EditProfile({ data, username }) {
                         value={profile.photo}
                         onChange={(e) => handleChange('photo', e.target.value)}
                     />
-                </div>
-
+                </div>*/}
                 <div>
                     <label className="block font-semibold text-gray-700">About</label>
                     <textarea
@@ -131,6 +133,15 @@ export default function EditProfile({ data, username }) {
                     profile={profile}
                     onAdd={(section) => handleChange(section.key, section.defaultValue)}
                 />
+
+                {/* Preview button */}
+                <button
+                    type="button"
+                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition mr-3"
+                    onClick={() => {}}
+                >
+                    Preview
+                </button>
 
                 {/* Save button */}
                 <button
